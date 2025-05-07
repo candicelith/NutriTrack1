@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@source "../views";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../../node_modules/flowbite";
+
+@theme {
+    --color-biru-primary: #8ECAE6;
+    --color-biru-secondary: #EFFAFC;
+    --color-biru-tertiary: #023047;
+    --color-hijau-success: #90DFAA;
+}
