@@ -41,17 +41,12 @@
                         <h2 class="text-3xl font-bold">Gizi Anak di Posyandu Moyudan</h2>
 
 
-                        <div class="w-full max-w-sm rounded-lg bg-white p-4 shadow-sm md:p-6 dark:bg-gray-800">
+                        <div class="w-full max-w-sm rounded-lg p-4 md:p-6">
 
                             <div class="flex w-full items-start justify-between">
                                 <div class="flex-col items-center">
-                                    <div class="mb-1 flex items-center">
-                                        <h5 class="me-1 text-xl font-bold leading-none text-gray-900 dark:text-white">
-                                            Website traffic</h5>
-                                    </div>
-
                                     <!-- Pie Chart -->
-                                    <div class="py-6" id="pie-chart"></div>
+                                    <div class="py-6" id="chart"></div>
                                 </div>
 
                             </div>
@@ -61,69 +56,41 @@
             </div>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-        const getChartOptions = () => {
-            return {
-                series: [52.8, 26.8],
-                colors: ["#fff", "#fff"],
-                chart: {
-                    height: 420,
-                    width: "100%",
-                    type: "pie",
-                },
-                stroke: {
-                    colors: ["white"],
-                    lineCap: "",
-                },
-                plotOptions: {
-                    pie: {
-                        labels: {
-                            show: true,
-                        },
-                        size: "100%",
-                        dataLabels: {
-                            offset: -25
-                        }
+        var options = {
+            series: [90, 10],
+            colors: ['#023047', '#FFB703'],
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            labels: ['Gizi Baik', 'Gizi Buruk'],
+            dataLabels: {
+                enabled: true,
+                style: {
+                    fontFamily: 'Inter, sans-serif',
+                }
+            },
+            legend: {
+                position: 'right',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '24px',
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
                     },
-                },
-                labels: ["Gizi Baik", "Gizi Buruk"],
-                dataLabels: {
-                    enabled: true,
-                    style: {
-                        fontFamily: "Inter, sans-serif",
-                    },
-                },
-                legend: {
-                    position: "bottom",
-                    fontFamily: "Inter, sans-serif",
-                },
-                yaxis: {
-                    labels: {
-                        formatter: function(value) {
-                            return value + "%"
-                        },
-                    },
-                },
-                xaxis: {
-                    labels: {
-                        formatter: function(value) {
-                            return value + "%"
-                        },
-                    },
-                    axisTicks: {
-                        show: false,
-                    },
-                    axisBorder: {
-                        show: false,
-                    },
-                },
-            }
-        }
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
 
-        if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
-            const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
-            chart.render();
-        }
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
     </script>
 @endsection
