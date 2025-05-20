@@ -37,3 +37,11 @@ Route::get('/data-gizi-update', function () {
 Route::get('/edit-profil', function () {
     return view('content.edit-profil');
 })->name('edit-profil');
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/signup', function () {
+    return view('auth.signup');
+})->name('signup');

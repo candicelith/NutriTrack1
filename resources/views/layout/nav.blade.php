@@ -25,8 +25,8 @@
     <aside id="logo-sidebar"
         class="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0"
         aria-label="Sidebar">
-        <div class="bg-biru-primary h-full overflow-y-auto px-5 py-8">
-            <div class="flex h-full flex-col justify-between space-y-8">
+        <div class="bg-biru-primary h-full overflow-y-auto px-3 py-6">
+            <div class="flex h-full w-full flex-col justify-between space-y-8">
                 <a href="#" class="mb-5 flex items-center justify-center">
                     <img src="{{ asset('asset/logo nutritrack.png') }}" class="me-3" alt="NutriTrack Logo" />
                     <span class="self-center whitespace-nowrap text-2xl font-black">NutriTrack</span>
@@ -35,15 +35,15 @@
                     <div class="space-y-12">
                         <div class="flex flex-col items-center justify-center space-y-3">
                             <img src="{{ asset('asset/profile-picture.png') }}" width="192" height="192"
-                                alt="Profile Picture" class="h-48">
+                                alt="Profile Picture" class="h-32 w-32">
                             <span class="text-xl font-bold">Sucipto</span>
                             <span class="text-base font-medium">Posyandu Moyudan</span>
                         </div>
                         <div class="flex flex-col items-center justify-center">
-                            <ul class="w-fit space-y-6 text-xl font-semibold">
+                            <ul class="w-fit space-y-3 text-lg font-semibold">
                                 <li>
                                     <a href="{{ route('edit-profil') }}"
-                                        class="{{ request()->routeIs('edit-profil') ? 'text-white bg-biru-tertiary' : 'text-biru-tertiary' }} hover:bg-biru-tertiary group flex items-center rounded-lg px-3 py-2 hover:text-white"
+                                        class="{{ request()->routeIs('edit-profil') ? 'text-white bg-biru-tertiary' : 'text-biru-tertiary' }} hover:bg-biru-tertiary group flex items-center rounded-lg px-4 py-1 hover:text-white"
                                         @if (request()->routeIs('edit-profil')) aria-current="page" @endif>
                                         <svg class="{{ request()->routeIs('edit-profil') ? 'text-white' : 'text-biru-tertiary' }} h-9 w-9 transition duration-75 group-hover:text-white"
                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -57,7 +57,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('home') }}"
-                                        class="{{ request()->routeIs('home') ? 'text-white bg-biru-tertiary' : 'text-biru-tertiary' }} hover:bg-biru-tertiary group flex items-center rounded-lg px-3 py-2 hover:text-white"
+                                        class="{{ request()->routeIs('home') ? 'text-white bg-biru-tertiary' : 'text-biru-tertiary' }} hover:bg-biru-tertiary group flex items-center rounded-lg px-4 py-1 hover:text-white"
                                         @if (request()->routeIs('home')) aria-current="page" @endif>
                                         <svg class="{{ request()->routeIs('home') ? 'text-white' : 'text-biru-tertiary' }} h-9 w-9 transition duration-75 group-hover:text-white"
                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -71,7 +71,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('data-anak') }}"
-                                        class="{{ request()->routeIs('data-anak') ? 'text-white bg-biru-tertiary' : 'text-biru-tertiary' }} hover:bg-biru-tertiary group flex items-center rounded-lg px-3 py-2 hover:text-white"
+                                        class="{{ request()->routeIs('data-anak') ? 'text-white bg-biru-tertiary' : 'text-biru-tertiary' }} hover:bg-biru-tertiary group flex items-center rounded-lg px-4 py-1 hover:text-white"
                                         @if (request()->routeIs('data-anak')) aria-current="page" @endif>
                                         <svg class="{{ request()->routeIs('data-anak') ? 'text-white' : 'text-biru-tertiary' }} h-9 w-9 transition duration-75 group-hover:text-white"
                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -85,7 +85,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('data-gizi') }}"
-                                        class="{{ request()->routeIs('data-gizi') ? 'text-white bg-biru-tertiary' : 'text-biru-tertiary' }} hover:bg-biru-tertiary group flex items-center rounded-lg px-3 py-2 hover:text-white"
+                                        class="{{ request()->routeIs('data-gizi') ? 'text-white bg-biru-tertiary' : 'text-biru-tertiary' }} hover:bg-biru-tertiary group flex items-center rounded-lg px-4 py-1 hover:text-white"
                                         @if (request()->routeIs('data-gizi')) aria-current="page" @endif>
                                         <svg class="{{ request()->routeIs('data-gizi') ? 'text-white' : 'text-biru-tertiary' }} h-9 w-9 transition duration-75 group-hover:text-white"
                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -104,7 +104,7 @@
                         <ul class="w-fit">
                             <li>
                                 <a href="#"
-                                    class="text-biru-tertiary hover:bg-biru-tertiary group flex items-center rounded-lg px-3 py-2 hover:text-white">
+                                    class="text-biru-tertiary hover:bg-biru-tertiary group flex items-center rounded-lg px-4 py-1 hover:text-white">
                                     <svg class="text-biru-tertiary h-9 w-9 transition duration-75 group-hover:text-white"
                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24" fill="none" viewBox="0 0 24 24">
