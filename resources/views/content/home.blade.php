@@ -1,11 +1,12 @@
 @extends('layout.nav')
 
 @section('content')
-    <section>
+    <section x-data="homePageHandler()">
         <div class="p-9 sm:ml-64">
             <div class="rounded-lg">
                 <div class="mb-9 grid grid-cols-1">
-                    <h1 class="text-biru-tertiary text-6xl font-bold">Selamat Datang, Sucipto!</h1>
+                    <h1 class="text-biru-tertiary text-6xl font-bold">Selamat Datang, <span x-text="user.name"></span>!
+                    </h1>
                 </div>
                 <div class="bg-biru-secondary mb-9 flex h-48 items-center justify-center rounded-2xl border p-9">
                     <p class="text-2xl font-medium"><span class="text-biru-tertiary font-bold">NutriTrack</span> adalah sistem
@@ -38,7 +39,8 @@
                     </div>
                     <div
                         class="bg-biru-secondary col-span-2 flex flex-col items-center justify-center rounded-2xl border p-9">
-                        <h2 class="text-3xl font-bold">Gizi Anak di Posyandu Moyudan</h2>
+                        <h2 class="text-3xl font-bold">Gizi Anak di <span x-text="data.posyandu?.name"></span>
+                        </h2>
 
 
                         <div class="w-full max-w-sm rounded-lg p-4 md:p-6">
@@ -58,6 +60,33 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
+        function homePageHandler() {
+            return {
+                user: Alpine.store('user').data,
+                data: {},
+                statistics: {},
+                isLoading: false,
+                errors: {},
+                async init() {
+                    // this.user = Alpine.store('user').data;
+                    try {
+                        const response = await axios.get(
+                            `/nutritrack/nutrition-record/by-posyandu/${this.user.unit_posyandu}`);
+                        this.data = response.data;
+                        Alpine.store('user').posyandu = this.data.posyandu;
+                        Alpine.store('user').setPosyandu(this.data.posyandu);
+
+                        this.statistics = response.data.statistics;
+                        this.isLoading = false;
+                    } catch (error) {
+                        console.error('Error fetching data:', error);
+                        this.isLoading = false;
+                    }
+                }
+            }
+        }
+
+
         var options = {
             series: [90, 10],
             colors: ['#023047', '#FFB703'],
