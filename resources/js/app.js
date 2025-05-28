@@ -40,17 +40,21 @@ Alpine.store("user", {
         // Remove the token from localStorage
         localStorage.removeItem("authToken");
         localStorage.removeItem("userData");
+        localStorage.removeItem("posyanduData");
         // Remove the Authorization header for Axios
         delete axios.defaults.headers.common["Authorization"];
     },
     async loadUser() {
         const cachedUser = localStorage.getItem("userData");
         const cachedToken = localStorage.getItem("authToken");
+        const cachedPosyandu = localStorage.getItem("posyanduData");
 
         if (cachedUser && cachedToken) {
             this.authenticated = true;
             this.data = JSON.parse(cachedUser);
             this.token = cachedToken;
+            this.posyandu = JSON.parse(cachedPosyandu);
+            console.log("posyandu", this.posyandu);
             axios.defaults.headers.common[
                 "Authorization"
             ] = `Bearer ${cachedToken}`;

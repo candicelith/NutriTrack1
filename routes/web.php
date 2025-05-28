@@ -18,7 +18,7 @@ Route::get('/data-anak-create', function () {
     return view('content.data-anak-create');
 })->name('data-anak-create');
 
-Route::get('/data-anak-update', function () {
+Route::get('/data-anak-update/{id}', function () {
     return view('content.data-anak-update');
 })->name('data-anak-update');
 

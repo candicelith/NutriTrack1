@@ -38,7 +38,7 @@
                                 <img src="{{ asset('asset/profile-picture.png') }}" width="192" height="192"
                                     alt="Profile Picture" class="h-32 w-32">
                                 <span class="text-xl font-bold" x-text="user.data.name">Sucipto</span>
-                                <span class="text-base font-medium" x-text="user.posyandu.name">Posyandu Moyudan</span>
+                                <span class="text-base font-medium" x-text="user.posyandu.name">Posyandu</span>
                             </div>
                             <div class="flex flex-col items-center justify-center">
                                 <ul class="w-fit space-y-3 text-lg font-semibold">

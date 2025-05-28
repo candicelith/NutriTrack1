@@ -1,7 +1,7 @@
 @extends('layout.nav')
 
 @section('content')
-    <section>
+    <section x-data="editProfileHandler()">
         <div class="p-9 sm:ml-64">
             <div class="rounded-lg">
                 <div class="mb-9">
@@ -23,15 +23,15 @@
                         <div>
                             <label for="full_name" class="text-base font-medium">Nama Lengkap</label>
                             <input type="text" id="full_name" name="full_name"
-                                class="mt-2 w-full rounded-lg p-3 text-base" placeholder="Masukkan nama lengkap">
+                                class="mt-2 w-full rounded-lg p-3 text-base" placeholder="Masukkan nama lengkap"
+                                :value="user.name">
                         </div>
 
                         <div>
                             <label for="unit_posyandu" class="text-base font-medium">Unit Posyandu</label>
                             <select id="unit_posyandu" name="unit_posyandu" class="mt-2 w-full rounded-lg p-3 text-base">
                                 <option value="">Pilih Unit Posyandu</option>
-                                <option value="Moyudan">Moyudan</option>
-                                <option value="Minggir">Minggir</option>
+                                <option :value="posyandu.name" x-text="posyandu.name">Posyandu</option>
                             </select>
                         </div>
 
@@ -50,4 +50,40 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function editProfileHandler() {
+            return {
+                user: Alpine.store('user').data,
+                posyandu: Alpine.store('user').posyandu,
+                isLoading: false,
+                errors: {},
+                // async init() {
+                //     // Initialize form with user data
+                //     document.getElementById('full_name').value = this.user.name;
+                //     document.getElementById('unit_posyandu').value = this.user.unit_posyandu;
+                // },
+                async submit() {
+                    this.isLoading = true;
+                    this.errors = {};
+                    try {
+                        const response = await axios.post('/profile/update', {
+                            full_name: document.getElementById('full_name').value,
+                            unit_posyandu: document.getElementById('unit_posyandu').value,
+                        });
+                        // Handle success response
+                        console.log(response.data);
+                        this.isLoading = false;
+                    } catch (error) {
+                        this.isLoading = false;
+                        if (error.response && error.response.data) {
+                            this.errors = error.response.data.errors || {};
+                        } else {
+                            this.errors.general = 'Terjadi kesalahan, silakan coba lagi.';
+                        }
+                    }
+                }
+            };
+        }
+    </script>
 @endsection

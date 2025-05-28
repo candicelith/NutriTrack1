@@ -23,7 +23,7 @@
                         <h2 class="text-3xl font-bold">Data Terdaftar</h2>
                         <div class="space-y-3">
                             <div class="flex space-x-2 text-3xl font-semibold">
-                                <p>130</p>
+                                <p x-text="statistics.total_children">130</p>
                                 <p>Anak</p>
                             </div>
                             <div
@@ -33,7 +33,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4" />
                                 </svg>
-                                <p>50</p>
+                                <p x-text="statistics.total_children">50</p>
                             </div>
                         </div>
                     </div>
