@@ -119,10 +119,6 @@
                         const response = await axios.get('/monitoring/child-data/get');
                         this.children = response.data.data;
                         console.log("haloooo" + this.children.name);
-                        // Jika ingin ambil posyandu dari data anak pertama:
-                        if (this.children.length > 0) {
-                            this.posyandu = this.children[0].posyandu || {};
-                        }
                     } catch (error) {
                         this.error = error.message;
                     } finally {

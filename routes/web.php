@@ -30,7 +30,7 @@ Route::get('/data-gizi-create', function () {
     return view('content.data-gizi-create');
 })->name('data-gizi-create');
 
-Route::get('/data-gizi-update', function () {
+Route::get('/data-gizi-update/{id}', function () {
     return view('content.data-gizi-update');
 })->name('data-gizi-update');
 

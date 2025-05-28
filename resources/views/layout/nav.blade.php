@@ -104,7 +104,7 @@
                         <div class="flex flex-col items-center justify-center">
                             <ul class="w-fit">
                                 <li>
-                                    <a href="#"
+                                    <button @click="$store.user.clearUser(); $store.user.loadUser()" href="#"
                                         class="text-biru-tertiary hover:bg-biru-tertiary group flex items-center rounded-lg px-4 py-1 hover:text-white">
                                         <svg class="text-biru-tertiary h-9 w-9 transition duration-75 group-hover:text-white"
                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -114,7 +114,7 @@
                                                 d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2" />
                                         </svg>
                                         <span class="ms-6 text-xl font-semibold">Log Out</span>
-                                    </a>
+                                    </button>
                                 </li>
                             </ul>
                         </div>

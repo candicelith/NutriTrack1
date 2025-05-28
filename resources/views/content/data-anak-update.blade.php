@@ -61,6 +61,7 @@
                 async loadChildData() {
                     const pathParts = window.location.pathname.split('/');
                     this.childId = pathParts[pathParts.length - 1]; // Ambil bagian terakhir dari path
+                    console.log('Child ID:', this.childId);
                     try {
                         const response = await axios.get(`/monitoring/child-data/show/${this.childId}`);
                         const child = response.data;
