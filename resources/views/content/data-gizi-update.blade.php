@@ -60,20 +60,18 @@
                     try {
                         const pathParts = window.location.pathname.split('/');
                         this.childId = pathParts[pathParts.length - 1]; // Ambil bagian terakhir dari path
-                        console.log('Child ID:', this.childId);
-                        const response = await axios.get('/monitoring/child-data/get');
+                        // console.log('Child ID:', this.childId);
+                        const response = await axios.get(
+                            `/monitoring/child-data/get?kecamatan_name=${Alpine.store('user').posyandu.kecamatan.name}`
+                            );
                         this.children = response.data.data;
-                        console.log('Children Data:', this.children);
-
+                        // this.children = this.children.filter(child => child.kecamatan == Alpine.store('user').posyandu
+                        //     .kecamatan.name);
                         const data = await axios.get(
                             `/nutritrack/nutrition-record/child/${this.childId}`);
                         this.data = data.data;
-                        console.log('nutrition Data:', this.data);
                         this.height = this.data.nutrition_data.height_cm;
                         this.weight = this.data.nutrition_data.weight_kg;
-
-                        console.log('Height:', this.height);
-                        console.log('Weight:', this.weight);
 
                     } catch (error) {
                         console.error('Error fetching child data:', error);

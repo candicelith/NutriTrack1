@@ -95,7 +95,7 @@
         function dataGiziHandler() {
             return {
                 nutritions: [],
-                posyandu: Alpine.store('user').posyandu,
+                posyandu: Alpine.store('user').data.unit_posyandu,
                 isLoading: false,
                 error: null,
                 async init() {
@@ -106,8 +106,7 @@
                 async fetchDataGizi() {
                     try {
                         const response = await axios.get(
-                            '/nutritrack/nutrition-record');
-                        // Jika response.data.data berupa objek, ubah ke array
+                            `/nutritrack/nutrition-record/by-posyandu/${this.posyandu}`);
                         this.nutritions = response.data.data.data;
                     } catch (error) {
                         this.error = error.message;

@@ -64,7 +64,12 @@
             return {
                 user: Alpine.store('user').data,
                 data: {},
-                statistics: {},
+                children: [],
+                statistics: [], // jumlah anak yang terdaftar
+                growth: 0,
+                goodNutrition: 0,
+                badNutrition: 0,
+                chart: null,
                 isLoading: false,
                 errors: {},
                 async init() {
@@ -75,51 +80,109 @@
                         this.data = response.data;
                         Alpine.store('user').posyandu = this.data.posyandu;
                         Alpine.store('user').setPosyandu(this.data.posyandu);
-
+                        this.children = this.data.data.data;
+                        this.growth = this.children.reduce((growth, child) => {
+                            const createdAt = new Date(child.created_at);
+                            const now = new Date();
+                            return growth + (
+                                createdAt.getFullYear() === now.getFullYear() &&
+                                createdAt.getMonth() === now.getMonth() ? 1 : 0
+                            );
+                        }, 0);
                         this.statistics = response.data.statistics;
+                        this.countStatNutrition();
+                        this.renderChart([this.badNutrition, this.goodNutrition]);
                         this.isLoading = false;
                     } catch (error) {
                         console.error('Error fetching data:', error);
                         this.isLoading = false;
                     }
+                },
+                countStatNutrition() {
+                    for (let child of this.children) {
+                        if (child.nutrition_status == 'Normal') {
+                            this.goodNutrition++;
+                        } else {
+                            this.badNutrition++;
+                        }
+                    }
+                },
+                renderChart(seriesData) {
+                    if (this.chart) {
+                        this.chart.updateSeries(seriesData);
+                        return;
+                    }
+                    var options = {
+                        series: seriesData,
+                        colors: ['#023047', '#FFB703'],
+                        chart: {
+                            width: 380,
+                            type: 'pie',
+                        },
+                        labels: ['Gizi Buruk', 'Gizi Baik'],
+                        dataLabels: {
+                            enabled: true,
+                            style: {
+                                fontFamily: 'Inter, sans-serif',
+                            }
+                        },
+                        legend: {
+                            position: 'right',
+                            fontFamily: 'Inter, sans-serif',
+                            fontSize: '24px',
+                        },
+                        responsive: [{
+                            breakpoint: 480,
+                            options: {
+                                chart: {
+                                    width: 200
+                                },
+                                legend: {
+                                    position: 'bottom'
+                                }
+                            }
+                        }]
+                    };
+                    this.chart = new ApexCharts(document.querySelector("#chart"), options);
+                    this.chart.render();
                 }
             }
         }
 
 
-        var options = {
-            series: [90, 10],
-            colors: ['#023047', '#FFB703'],
-            chart: {
-                width: 380,
-                type: 'pie',
-            },
-            labels: ['Gizi Baik', 'Gizi Buruk'],
-            dataLabels: {
-                enabled: true,
-                style: {
-                    fontFamily: 'Inter, sans-serif',
-                }
-            },
-            legend: {
-                position: 'right',
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '24px',
-            },
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }]
-        };
+        // var options = {
+        //     series: [90, 10],
+        //     colors: ['#023047', '#FFB703'],
+        //     chart: {
+        //         width: 380,
+        //         type: 'pie',
+        //     },
+        //     labels: ['Gizi Baik', 'Gizi Buruk'],
+        //     dataLabels: {
+        //         enabled: true,
+        //         style: {
+        //             fontFamily: 'Inter, sans-serif',
+        //         }
+        //     },
+        //     legend: {
+        //         position: 'right',
+        //         fontFamily: 'Inter, sans-serif',
+        //         fontSize: '24px',
+        //     },
+        //     responsive: [{
+        //         breakpoint: 480,
+        //         options: {
+        //             chart: {
+        //                 width: 200
+        //             },
+        //             legend: {
+        //                 position: 'bottom'
+        //             }
+        //         }
+        //     }]
+        // };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+        // var chart = new ApexCharts(document.querySelector("#chart"), options);
+        // chart.render();
     </script>
 @endsection

@@ -107,6 +107,14 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
     <script>
+        // if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+        //     const dataTable = new simpleDatatables.DataTable("#search-table", {
+        //         searchable: true,
+        //         sortable: false,
+        //     });
+        // }
+    </script>
+    <script>
         function dataAnakHandler() {
             return {
                 children: [],
@@ -116,9 +124,9 @@
                 async init() {
                     this.isLoading = true;
                     try {
-                        const response = await axios.get('/monitoring/child-data/get');
+                        const response = await axios.get(
+                            `/monitoring/child-data/get?kecamatan_name=${this.posyandu.kecamatan.name}`);
                         this.children = response.data.data;
-                        console.log("haloooo" + this.children.name);
                     } catch (error) {
                         this.error = error.message;
                     } finally {
@@ -149,13 +157,5 @@
                 }
             }
         }
-    </script>
-    <script>
-        // if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-        //     const dataTable = new simpleDatatables.DataTable("#search-table", {
-        //         searchable: true,
-        //         sortable: false,
-        //     });
-        // }
     </script>
 @endsection

@@ -60,8 +60,13 @@
                 errors: {},
                 async init() {
                     try {
-                        const response = await axios.get('/monitoring/child-data/get');
+                        const response = await axios.get(
+                            `/monitoring/child-data/get?kecamatan_name=${Alpine.store('user').posyandu.kecamatan.name}`
+                            );
                         this.children = response.data.data;
+                        // this.children = this.children.filter(child => child.kecamatan == Alpine.store('user').posyandu
+                        //     .kecamatan.name);
+                        // console.log('Child data loaded:', this.children);
                     } catch (error) {
                         console.error('Error fetching child data:', error);
                         alert('Gagal memuat data anak. Silakan coba lagi.');
