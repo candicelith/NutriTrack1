@@ -35,10 +35,10 @@
                         </div>
                     </div>
                     <div class="flex justify-end space-x-2">
-                        <button
+                        <a href="{{ route('data-anak') }}"
                             class="text-biru-tertiary rounded-xl border bg-white px-8 py-2 text-lg font-semibold hover:bg-gray-100">
                             Batal
-                        </button>
+                        </a>
                         <button @click="createChild()"
                             class="bg-biru-tertiary hover:bg-biru-tertiary-hover rounded-xl px-8 py-2 text-lg font-semibold text-white">
                             <span x-show="!isLoading">Simpan</span>

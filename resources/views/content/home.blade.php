@@ -148,41 +148,5 @@
                 }
             }
         }
-
-
-        // var options = {
-        //     series: [90, 10],
-        //     colors: ['#023047', '#FFB703'],
-        //     chart: {
-        //         width: 380,
-        //         type: 'pie',
-        //     },
-        //     labels: ['Gizi Baik', 'Gizi Buruk'],
-        //     dataLabels: {
-        //         enabled: true,
-        //         style: {
-        //             fontFamily: 'Inter, sans-serif',
-        //         }
-        //     },
-        //     legend: {
-        //         position: 'right',
-        //         fontFamily: 'Inter, sans-serif',
-        //         fontSize: '24px',
-        //     },
-        //     responsive: [{
-        //         breakpoint: 480,
-        //         options: {
-        //             chart: {
-        //                 width: 200
-        //             },
-        //             legend: {
-        //                 position: 'bottom'
-        //             }
-        //         }
-        //     }]
-        // };
-
-        // var chart = new ApexCharts(document.querySelector("#chart"), options);
-        // chart.render();
     </script>
 @endsection

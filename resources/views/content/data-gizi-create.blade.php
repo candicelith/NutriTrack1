@@ -36,10 +36,10 @@
                         </div>
                     </div>
                     <div class="flex justify-end space-x-2">
-                        <button
+                        <a href="{{ route('data-gizi') }}"
                             class="text-biru-tertiary rounded-xl border bg-white px-8 py-2 text-lg font-semibold hover:bg-gray-100">
                             Batal
-                        </button>
+                        </a>
                         <button @click="saveNutritionData()"
                             class="bg-biru-tertiary hover:bg-biru-tertiary-hover rounded-xl px-8 py-2 text-lg font-semibold text-white">
                             <span x-show="!isLoading">Simpan</span>
@@ -62,7 +62,7 @@
                     try {
                         const response = await axios.get(
                             `/monitoring/child-data/get?kecamatan_name=${Alpine.store('user').posyandu.kecamatan.name}`
-                            );
+                        );
                         this.children = response.data.data;
                         // this.children = this.children.filter(child => child.kecamatan == Alpine.store('user').posyandu
                         //     .kecamatan.name);

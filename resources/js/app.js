@@ -1,9 +1,8 @@
 import "./bootstrap";
-import "./bootstrap";
 import Alpine from "alpinejs";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8001/api";
+axios.defaults.baseURL = "http://localhost:8000/api";
 
 window.Alpine = Alpine;
 Alpine.store("user", {

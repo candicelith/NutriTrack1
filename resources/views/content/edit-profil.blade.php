@@ -36,10 +36,10 @@
                         </div>
 
                         <div class="flex justify-end space-x-4">
-                            <button
+                            <a href="{{ route('home') }}"
                                 class="text-biru-tertiary rounded-xl border bg-white px-8 py-2 text-lg font-semibold hover:bg-gray-100">
                                 Batal
-                            </button>
+                            </a>
                             <button
                                 class="bg-biru-tertiary hover:bg-biru-tertiary-hover rounded-xl px-8 py-2 text-lg font-semibold text-white">
                                 Simpan
