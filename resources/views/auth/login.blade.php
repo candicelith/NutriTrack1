@@ -41,7 +41,7 @@
                 <p x-show="errors.login" class="text-red-500 text-sm text-center w-full px-3" x-text="errors.login"></p>
                 <p class="text-biru-tertiary font-medium">
                     Belum punya akun?
-                    <a href="#" class="text-biru-tertiary font-extrabold hover:underline">
+                    <a href="{{ route('signup') }}" class="text-biru-tertiary font-extrabold hover:underline">
                         Sign Up
                     </a>
 

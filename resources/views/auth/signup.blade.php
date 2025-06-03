@@ -58,7 +58,7 @@
                 </button>
                 <p class="text-biru-tertiary font-medium">
                     Sudah punya akun?
-                    <a href="#" class="text-biru-tertiary font-extrabold hover:underline">
+                    <a href="{{ route('login') }}" class="text-biru-tertiary font-extrabold hover:underline">
                         Log In
                     </a>
                 </p>
