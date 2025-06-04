@@ -4,7 +4,7 @@ Website ini sistem digital yang membantu petugas posyandu/puskesmas mencatat dat
 
 ## Features
 
-* <b>Authentikasi dan Otorisasi:</b> Pengguna dapat melakukan sign up, login, dan logout untuk mengakses sistem.
+* Authentikasi dan Otorisasi: Pengguna dapat melakukan sign up, login, dan logout untuk mengakses sistem.
 * Visualisasi data gizi anak: Pie chart akan menampilkan  proporsi anak dengan gizi buruk dan anak yang memenuhi asupan gizi dalam suatu posyandu.
 * Dashboard: Sistem menampilkan jumlah data anak yang terdaftar.
 * Tabel Data Anak:
