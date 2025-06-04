@@ -21,10 +21,8 @@ Website ini sistem digital yang membantu petugas posyandu/puskesmas mencatat dat
 ## Technologies Used
 
 * Framework: Laravel 11, Tailwind v4.1
-* Library: Flowbite
-* Otorisasi dan Autentikasi : Laravel Sanctum dan Spatie
-* Database: MySQL
-* Arsitektur API : Postman
+* Library: Flowbite, ApexChart
+* Bahasa Pemrograman: PHP, JavaScript
 * UI/UX: Figma
 * Tools General : Draw.io, Google tools, Github, VSCode
 
